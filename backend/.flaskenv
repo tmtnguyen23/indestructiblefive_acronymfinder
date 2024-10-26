@@ -1,0 +1,6 @@
+FLASK_APP=api.py
+FLASK_ENV=development
+MYSQL_ROOT_PASSWORD=rootpassword
+MYSQL_DATABASE=mydatabase
+MYSQL_USER=myuser
+MYSQL_PASSWORD=mypassword

@@ -6,9 +6,6 @@ app = Flask(__name__)
 def home():
     return '<h1>Hello Indestructible five!</h1>'
 
-@app.route('/greet/<string:name>', methods=['GET'])
-def greet(name):
-    return jsonify(message=f"Hello, {name}!")
-
-if __name__ == '__main__':
-    app.run(debug=True)  # Ensure it's set to run on port 5000
+@app.route('/members')
+def members():
+    return {"members": ["Member1", "Member2", "Member3"]}
