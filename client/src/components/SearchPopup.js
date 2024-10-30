@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import 'src/SearchPopup.css';
+import './SearchPopup.css';
+
 
 function SearchPopup({ onSearch, onRandomSearch }) {
   const [isVisible, setIsVisible] = useState(false);

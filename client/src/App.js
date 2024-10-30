@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SearchPopup from './components/SearchPopup';
+import SearchPopup from './components/SearchPopup.js';
 
 function App() {
   const [data, setData] = useState([{}]);
