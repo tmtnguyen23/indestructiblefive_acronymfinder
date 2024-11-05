@@ -1,19 +1,69 @@
+/* FNBO Color Palette */
+:root {
+  --fnbo-primary: #006341; /* Darker FNBO Green */
+  --fnbo-secondary: #ffffff; /* White */
+  --fnbo-light-gray: #f3f4f6;
+  --fnbo-border-gray: #e0e0e0;
+  --fnbo-dark-gray: #333333;
+}
+
 .search-popup {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    background: white;
-    border: 1px solid #ccc;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .search-popup input {
-    width: 200px;
-    padding: 5px;
-  }
-  
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: var(--fnbo-secondary);
+  border: 1px solid var(--fnbo-primary);
+  border-radius: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: var(--fnbo-dark-gray);
+}
+
+.search-popup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--fnbo-border-gray);
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-popup input:focus {
+  outline: none;
+  border-color: var(--fnbo-primary);
+  box-shadow: 0 0 5px rgba(122, 154, 1, 0.5); /* Slight darker green glow */
+}
+
+
+.fnbo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--fnbo-primary);
+  color: var(--fnbo-secondary);
+  font-family: Arial, sans-serif;
+}
+
+.fnbo-logo h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--fnbo-secondary);
+}
+
+.fnbo-nav a {
+  margin: 0 15px;
+  color: var(--fnbo-secondary);
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.fnbo-nav a:hover {
+  color: var(--fnbo-light-gray);
+}

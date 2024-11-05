@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './SearchPopup.css';
 
-
 function SearchPopup({ onSearch, onRandomSearch }) {
   const [isVisible, setIsVisible] = useState(false);
   const [query, setQuery] = useState('');
@@ -24,7 +23,7 @@ function SearchPopup({ onSearch, onRandomSearch }) {
             onChange={(e) => setQuery(e.target.value)}
           />
           <button onClick={handleSearch}>Go</button>
-          <button onClick={onRandomSearch}>Random Search</button> {/* Random Search button */}
+          <button onClick={onRandomSearch}>Random Search</button>
           <button onClick={toggleSearch}>Close</button>
         </div>
       )}
