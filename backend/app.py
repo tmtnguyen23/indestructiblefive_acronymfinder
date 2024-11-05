@@ -1,6 +1,6 @@
 # app/app.py
 from flask import Flask, request, jsonify
-
+from random import randrange
 from database import get_db_connection
 
 app = Flask(__name__)
@@ -11,17 +11,20 @@ def home():
 
 @app.route('/members')
 def members():
+    """
+    If you see the 'loading...' shows up on the frontend, it means the backend has issue connecting with it.  
+    """
     return {"members": ["Member1", "Member2", "Member3"]}
 
 @app.route('/search_acronym')
 def search_acronym():
-    # Get the acronym to search from query parameters 
-    # COMMENTED OUT FOR TESTING (WHILE NOT HAVING ANY PARAMETERS)
-    #acronym = request.args.get('acronym')
-    
-    # Validate input
-    #if not acronym:
-    #    return jsonify({"error": "Acronym parameter is required"}), 400
+    """
+    This function looks up acronym (search box) and displays its meaning to the user.
+    """
+    acronym = request.args.get('acronym')
+
+    if not acronym:
+        return jsonify({"error": "Please enter the acronym"}), 400
     
     # Get a database connection
     conn = get_db_connection()
@@ -29,25 +32,77 @@ def search_acronym():
     
     try:
         # Query the database for the acronym
-        query = "SELECT id, acronym, meaning FROM acronyms WHERE acronym = 'VDC'"
+        query = f"SELECT id, acronym, meaning FROM acronyms WHERE acronym = '{acronym}'"
         cursor.execute(query)
-        #cursor.execute(query, (acronym,))
-        # TODO: Switch to fetchall(), 'result' becomes a list 
-        result = cursor.fetchone()
+        results = cursor.fetchall()
 
         # Check if acronym is found
-        if result:
-            # Format the result into a dictionary
-            #acronym_data = {
-            #    "id": result[0],
-            #    "acronym": result[1],
-            #    "meaning": result[2]
-            #}
-            return result
-            #return jsonify(acronym_data), 200
-
+        if len(results) > 0:
+            result_list = []
+            for result in results:
+                entry = "{result: " + result[1] + "}"
+                result_list.append(entry)
+            
+            return jsonify({'result': result_list}), 200
         else:
             return jsonify({"message": "Acronym not found"}), 404
     finally:
         cursor.close()
         conn.close()
+
+@app.route('/add_acronym')
+def add_acronym():
+    """
+    This function adds the user-suggested acronym to the database.
+    """
+    #TODO: HOW THE 'SUGGEST ACRONYM' PAGE LOOKS LIKE? 
+    word = request.args.get('suggestion')
+    meaning = request.args.get('meaning')
+    
+    # Get a database connection
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    try:
+        # Query the database for the acronym
+        query = f"SELECT id, acronym, meaning FROM acronyms WHERE acronym = '{word}'"
+        iquery = f"INSERT INTO acronyms(acronym, meaning) VALUES ('{word}', '{meaning}')"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        # Check if acronym is found
+        if len(results) > 0:
+            for result in results: 
+                if word == result[1] and meaning == result[2]:
+                    return jsonify({'message': 'Acronym already exists'}), 200
+                else: 
+                    cursor.execute(iquery)
+                    return jsonify({"message": "Added acronym to the database"}), 200
+        else:
+            return jsonify({"message": "Added acronym to the database"}), 200
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/random_acronym')
+def random_acronym():
+    """
+    This function picks up an entry from the database and displays it for the random acronym button. 
+    """
+    # Get a database connection
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        # Random query from the table acronyms 
+
+        query = f"SELECT id FROM acronyms ORDER BY RAND() LIMIT 1"
+        cursor.execute(query)
+        result = cursor.fetchone()
+
+        # Check if acronym is found
+        return jsonify({"acronym": result}), 200
+    finally:
+        cursor.close()
+        conn.close()
+
