@@ -9,13 +9,6 @@ app = Flask(__name__)
 def home():
     return '<h1>Hello Indestructible five!</h1>'
 
-@app.route('/members')
-def members():
-    """
-    If you see the 'loading...' shows up on the frontend, it means the backend has issue connecting with it.  
-    """
-    return {"members": ["Member1", "Member2", "Member3"]}
-
 @app.route('/search_acronym')
 def search_acronym():
     """
@@ -32,15 +25,15 @@ def search_acronym():
     
     try:
         # Query the database for the acronym
-        query = f"SELECT id, acronym, meaning FROM acronyms WHERE acronym = '{acronym}'"
-        cursor.execute(query)
+        query = f"SELECT id, acronym, meaning FROM acronyms WHERE acronym = %s"
+        cursor.execute(query, (acronym,))
         results = cursor.fetchall()
 
         # Check if acronym is found
         if len(results) > 0:
             result_list = []
             for result in results:
-                entry = "{result: " + result[1] + "}"
+                entry = "{result: " + result["meaning"] + "}"
                 result_list.append(entry)
             
             return jsonify({'result': result_list}), 200
@@ -65,9 +58,10 @@ def add_acronym():
     
     try:
         # Query the database for the acronym
-        query = f"SELECT id, acronym, meaning FROM acronyms WHERE acronym = '{word}'"
-        iquery = f"INSERT INTO acronyms(acronym, meaning) VALUES ('{word}', '{meaning}')"
-        cursor.execute(query)
+        query = "SELECT id, acronym, meaning FROM acronyms WHERE acronym = %s"
+        iquery = "INSERT INTO acronyms (acronym, meaning) VALUES (%s, %s)"
+        cursor.execute(query, (word,))
+
         results = cursor.fetchall()
 
         # Check if acronym is found
@@ -76,7 +70,7 @@ def add_acronym():
                 if word == result[1] and meaning == result[2]:
                     return jsonify({'message': 'Acronym already exists'}), 200
                 else: 
-                    cursor.execute(iquery)
+                    cursor.execute(iquery, (word, meaning))
                     return jsonify({"message": "Added acronym to the database"}), 200
         else:
             return jsonify({"message": "Added acronym to the database"}), 200
@@ -101,7 +95,7 @@ def random_acronym():
         result = cursor.fetchone()
 
         # Check if acronym is found
-        return jsonify({"acronym": result}), 200
+        return jsonify({"result": result}), 200
     finally:
         cursor.close()
         conn.close()
