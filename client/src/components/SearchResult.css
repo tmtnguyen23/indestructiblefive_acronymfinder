@@ -1,0 +1,33 @@
+/* Container styling for the search results */
+  .search-results {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    margin-top: 20px; /* Add space above the container */
+    padding: 15px; /* Add padding inside the container */
+  }
+  
+  /* Styling for the unordered list */
+  .search-results ul {
+    list-style-type: none; /* Remove default list bullets */
+    padding-left: 0; /* Remove default padding */
+  }
+  
+  /* Styling for each list item */
+  .search-results li {
+    padding: 10px; /* Add space inside each list item */
+    border-bottom: 1px solid #ddd; /* Add a divider between items */
+    font-size: 20px; /* Set font size */
+    font-family: Arial, Geneva, Helvetica, sans-serif;
+    color: #006341; /* Darker color for text */
+  }
+  
+  /* Styling for the no results message */
+  .no-results {
+    font-size: 18px; /* Slightly larger font size for emphasis */
+    color: #777; /* Gray color for the no results message */
+    text-align: center; /* Center the message */
+    padding: 15px; /* Add padding for better spacing */
+  }
+  

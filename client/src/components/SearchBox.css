@@ -1,0 +1,33 @@
+.search-box {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center;    /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: 30vh;           /* Full viewport height */
+}
+
+.search-box input {
+  width: 600px;        /* Set width to make it larger */
+  padding: 15px;       /* Increase padding to make it larger */
+  font-size: 16px;     /* Increase font size */
+  margin-bottom: 10px; /* Space between input and button */
+  border: 2px solid #ccc; /* Add border */
+  border-radius: 5px;  /* Optional: rounded corners */
+}
+
+.search-box button {
+  width: 250px;        /* Make the button width same as input */
+  padding: 12px;       /* Add padding */
+  font-size: 16px;     /* Match font size to input */
+  background-color: #006341; /* Button background color */
+  color: white;        /* Text color */
+  border: none;        /* Remove default button border */
+  border-radius: 5px;  /* Optional: rounded corners */
+  cursor: pointer;     /* Change cursor on hover */
+  margin-top: 10px;     /* Space above the button */
+}
+
+/* Optional: Add hover effect for button */
+.search-box button:hover {
+  background-color: #009b65; /* FNBO green */
+}

@@ -1,31 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Header from './components/Header';
+import Home from './pages/Home';
+import UserGuide from './pages/Guide';
+import AddAcronym from './pages/Add';
+import RandomAcronym from './pages/Random';
 
 function App() {
-
-  const [data, setData] = useState([{}])
-  const url = '/app'
-
-  useEffect(() => {
-    fetch("/members").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  },[])
+  
   return (
-    <div>
-      {(typeof data.members === 'undefined') ? (
-        <p>Loading...</p>
-      ): (
-        data.members.map((member, i) => ( 
-          <p key={i}>{member}</p> 
-        ))
-      )}
-    </div>
-  )
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/guide" element={<UserGuide />} />
+        <Route path="/add_acronym" element={<AddAcronym />} />
+        <Route path="/randomize" element={<RandomAcronym />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App 
+export default App;

@@ -1,0 +1,46 @@
+/* FNBO Color Palette */
+:root {
+    --fnbo-primary: #006341; /* Darker FNBO Green */
+    --fnbo-secondary: #ffffff; /* White */
+    --fnbo-light-gray: #f3f4f6;
+    --fnbo-border-gray: #e0e0e0;
+    --fnbo-dark-gray: #333333;
+  }
+  
+  .fnbo-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .fnbo-logo-image {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 10px; /* Space between the logo and the text */
+  }
+  
+  .fnbo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--fnbo-primary);
+    color: var(--fnbo-secondary);
+    font-family: Arial, sans-serif;
+  }
+  
+  .fnbo-logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--fnbo-secondary);
+  }
+  
+  .fnbo-nav a {
+    margin: 0 15px;
+    color: var(--fnbo-secondary);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .fnbo-nav a:hover {
+    color: var(--fnbo-light-gray);
+  }
