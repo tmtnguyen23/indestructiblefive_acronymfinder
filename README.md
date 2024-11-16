@@ -1,5 +1,7 @@
 # indestructiblefive_acronymfinder
-Acronym Finder - CIST2010 class project 
+Acronym Finder - CIST2010 class project
+<img width="955" alt="image" src="https://github.com/user-attachments/assets/a7eb5654-f660-4c65-a649-ef34ae6bfc5f">
+
 
 Before you start making changes, please make sure you are on a newly-created branch for your changes to avoid conflicts with the other developer. 
 
