@@ -1,0 +1,12 @@
+.guide-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}

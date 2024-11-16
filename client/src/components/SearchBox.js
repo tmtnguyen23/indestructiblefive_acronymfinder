@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import './SearchBox.css';
 
-function SearchBox({ onSearch, onRandomSearch, onAddAcronym }) {
+function SearchBox({ onSearch }) {
   const [query, setQuery] = useState('');
-  const [meaning, setMeaning] = useState('');
 
   const handleSearch = () => {
     onSearch(query); // Call the search function with the current query
-  };
-
-  const handleAddAcronym = () => {
-    onAddAcronym(query, meaning); // Add a new acronym with its meaning
-    setQuery(''); // Clear the input fields after adding
-    setMeaning('');
   };
 
   return (
@@ -23,16 +16,9 @@ function SearchBox({ onSearch, onRandomSearch, onAddAcronym }) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Add meaning..."
-        value={meaning}
-        onChange={(e) => setMeaning(e.target.value)}
-      />
 
       <button onClick={handleSearch}>Search</button>
-      <button onClick={onRandomSearch}>Random Acronym</button>
-      <button onClick={handleAddAcronym}>Add Acronym</button>
+
     </div>
   );
 }

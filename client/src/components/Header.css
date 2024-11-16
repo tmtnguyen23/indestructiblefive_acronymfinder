@@ -7,12 +7,15 @@
     --fnbo-dark-gray: #333333;
   }
   
-  .search-popup input:focus {
-    outline: none;
-    border-color: var(--fnbo-primary);
-    box-shadow: 0 0 5px rgba(122, 154, 1, 0.5); /* Slight darker green glow */
+  .fnbo-logo {
+    display: flex;
+    align-items: center;
   }
-  
+
+  .fnbo-logo-image {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 10px; /* Space between the logo and the text */
+  }
   
   .fnbo-header {
     display: flex;

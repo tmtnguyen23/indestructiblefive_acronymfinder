@@ -3,11 +3,11 @@
   flex-direction: column; /* Stack elements vertically */
   align-items: center;    /* Center horizontally */
   justify-content: center; /* Center vertically */
-  height: 100vh;           /* Full viewport height */
+  height: 30vh;           /* Full viewport height */
 }
 
 .search-box input {
-  width: 300px;        /* Set width to make it larger */
+  width: 600px;        /* Set width to make it larger */
   padding: 15px;       /* Increase padding to make it larger */
   font-size: 16px;     /* Increase font size */
   margin-bottom: 10px; /* Space between input and button */
@@ -16,7 +16,7 @@
 }
 
 .search-box button {
-  width: 320px;        /* Make the button width same as input */
+  width: 250px;        /* Make the button width same as input */
   padding: 12px;       /* Add padding */
   font-size: 16px;     /* Match font size to input */
   background-color: #006341; /* Button background color */

@@ -25,17 +25,17 @@ def search_acronym():
     
     try:
         # Query the database for the acronym
-        query = f"SELECT id, acronym, meaning FROM acronyms WHERE acronym = %s"
+        query = f"SELECT meaning FROM acronyms WHERE acronym = %s"
         cursor.execute(query, (acronym,))
         results = cursor.fetchall()
 
+        result_list = []
+        for i in range(len(results)):
+            result = results[i] 
+            result_list.append(result["meaning"])
+
         # Check if acronym is found
-        if len(results) > 0:
-            result_list = []
-            for result in results:
-                entry = "{result: " + result["meaning"] + "}"
-                result_list.append(entry)
-            
+        if len(result_list) > 0:
             return jsonify({'result': result_list}), 200
         else:
             return jsonify({"message": "Acronym not found"}), 404
@@ -90,12 +90,15 @@ def random_acronym():
     try:
         # Random query from the table acronyms 
 
-        query = f"SELECT id FROM acronyms ORDER BY RAND() LIMIT 1"
+        query = f"SELECT acronym, meaning FROM acronyms ORDER BY RAND() LIMIT 1"
         cursor.execute(query)
         result = cursor.fetchone()
 
-        # Check if acronym is found
-        return jsonify({"result": result}), 200
+        if result:
+            result_str = ""
+            acronym, meaning = result["acronym"], result["meaning"] 
+            result_str = acronym + " - " + meaning 
+            return jsonify({'result': result_str}), 200
     finally:
         cursor.close()
         conn.close()
