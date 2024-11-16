@@ -1,6 +1,6 @@
 # indestructiblefive_acronymfinder
-<img width="955" alt="image" src="https://github.com/user-attachments/assets/a7eb5654-f660-4c65-a649-ef34ae6bfc5f">
 
+<img width="955" alt="image" src="https://github.com/user-attachments/assets/30550a8b-5a79-4554-97d0-f6f414d54431">
 
 Before you start making changes, please make sure you are on a newly-created branch for your changes to avoid conflicts with the other developer. 
 
