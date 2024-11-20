@@ -8,6 +8,14 @@ CREATE TABLE IF NOT EXISTS acronyms (
     meaning VARCHAR(128)
 );
 
+-- Create the table if it doesn't already exist
+CREATE TABLE IF NOT EXISTS frequent_search (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    acronym VARCHAR(50),
+    meaning VARCHAR(128),
+    freq INT
+);
+
 INSERT INTO acronyms (acronym, meaning) VALUES ('2FA', 'Two Factor Authentication');
 INSERT INTO acronyms (acronym, meaning) VALUES ('2PC', 'Two Phase Commit (a protocol to ensure changes in a distributed transaction will either all go in or all not go in)');
 INSERT INTO acronyms (acronym, meaning) VALUES ('3DES', 'Triple Data Encryption Algorithm');

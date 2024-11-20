@@ -1,9 +1,12 @@
 # app/app.py
 from flask import Flask, request, jsonify
-from random import randrange
+import redis
 from database import get_db_connection
 
 app = Flask(__name__)
+
+#connect to redis
+client = redis.Redis(host='redis', port=6379)
 
 @app.route('/')
 def home():
@@ -103,3 +106,9 @@ def random_acronym():
         cursor.close()
         conn.close()
 
+# Route 1 - displays visitor count and increments
+@app.route('/count')
+def count():
+    count = client.incr('visitor_count')
+    message_str = f'You are Visitor number: {count}'
+    return jsonify({'message' : message_str})
