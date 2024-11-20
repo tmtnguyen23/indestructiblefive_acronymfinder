@@ -14,8 +14,7 @@ function Header() {
       <nav className="fnbo-nav">
         <Link to="/">Home</Link>
         <Link to="/guide">User Guide</Link>
-        <Link to="/add_acronym">Add Acronym</Link>
-        <Link to="/randomize">Random Acronym</Link>
+        <Link to="/stats">Page Stats</Link>
       </nav>
     </header>
   );
