@@ -5,6 +5,8 @@
     --fnbo-light-gray: #f3f4f6;
     --fnbo-border-gray: #e0e0e0;
     --fnbo-dark-gray: #333333;
+    --fnbo-hover: #00875a;
+    --header-height: 70px;
   }
   
   .fnbo-logo {
@@ -13,34 +15,56 @@
   }
 
   .fnbo-logo-image {
-    height: 50px; /* Adjust the height as needed */
-    margin-right: 10px; /* Space between the logo and the text */
+    height: 40px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+  .fnbo-logo-image:hover {
+    transform: scale(1.05);
   }
   
   .fnbo-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 40px;
+    height: var(--header-height);
     background-color: var(--fnbo-primary);
     color: var(--fnbo-secondary);
-    font-family: Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
   
   .fnbo-logo h1 {
     margin: 0;
     font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     color: var(--fnbo-secondary);
+  }
+  
+  .fnbo-nav {
+    display: flex;
+    gap: 30px;
   }
   
   .fnbo-nav a {
-    margin: 0 15px;
     color: var(--fnbo-secondary);
     text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
   }
   
   .fnbo-nav a:hover {
-    color: var(--fnbo-light-gray);
+    background-color: var(--fnbo-hover);
+    transform: translateY(-1px);
   }
