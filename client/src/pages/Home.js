@@ -54,7 +54,7 @@ function Home( ) {
       <SearchBox onSearch={handleSearch} />
       <div style={{ textAlign: 'center' }}>
         <p style={{ fontSize: '16px', color: '#006747', fontStyle: 'italic', fontFamily: 'Arial' }}>
-          Your lucky acronym today is {randomWord}
+          Your lucky acronym is {randomWord}
         </p>
         <button 
           onClick={handleRandomSearch}
