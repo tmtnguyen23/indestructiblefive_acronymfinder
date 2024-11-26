@@ -56,6 +56,21 @@ function Home( ) {
         <p style={{ fontSize: '16px', color: '#006747', fontStyle: 'italic', fontFamily: 'Arial' }}>
           Your lucky acronym today is {randomWord}
         </p>
+        <button 
+          onClick={handleRandomSearch}
+          style={{
+            padding: '8px 16px',
+            backgroundColor: '#006747',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontFamily: 'Arial',
+            marginTop: '10px'
+          }}
+        >
+          Generate New Acronym
+        </button>
       </div>
       <SearchResult results={searchResult} hasSearched={hasSearched} />
     </div>

@@ -40,6 +40,43 @@ describe('Home Component', () => {
     });
   });
 
+  test('generates new random acronym when button is clicked', async () => {
+    // First render with initial acronym
+    fetch.mockImplementationOnce(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ result: 'FIRST' })
+      })
+    );
+
+    // Second fetch for when button is clicked
+    fetch.mockImplementationOnce(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({ result: 'SECOND' })
+      })
+    );
+
+    render(<Home />);
+
+    // Wait for initial acronym
+    await waitFor(() => {
+      expect(screen.getByText('Your lucky acronym today is FIRST')).toBeInTheDocument();
+    });
+
+    // Click the generate button
+    const generateButton = screen.getByText('Generate New Acronym');
+    generateButton.click();
+
+    // Wait for new acronym
+    await waitFor(() => {
+      expect(screen.getByText('Your lucky acronym today is SECOND')).toBeInTheDocument();
+    });
+
+    expect(fetch).toHaveBeenCalledTimes(2);
+    expect(fetch).toHaveBeenLastCalledWith('/random_acronym');
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
