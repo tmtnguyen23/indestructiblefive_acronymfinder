@@ -212,7 +212,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('BAC', 'Business Acceptance Crit
 INSERT INTO acronyms (acronym, meaning) VALUES ('BAI', 'Business Application Identifier');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BAI', 'Bank Administration Institute');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BAJA', 'Building Automation Java Architecture');
-INSERT INTO acronyms (acronym, meaning) VALUES ('BASIC', 'Beginner s All-purpose Symbolic Instruction Code');
+INSERT INTO acronyms (acronym, meaning) VALUES ('BASIC', `Beginner's All-purpose Symbolic Instruction Code`);
 INSERT INTO acronyms (acronym, meaning) VALUES ('BATON', 'Build A Team Through Onboarding & Networking');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BAU', 'Business As Usual');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BBI', 'Bank-to-Bank Info');
@@ -230,7 +230,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('BE', 'Business Enhancement Rele
 INSERT INTO acronyms (acronym, meaning) VALUES ('BEN', 'Business Enhancement News');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BEO', 'Business Ethics Officer');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BER', 'Business Enhancement Release');
-INSERT INTO acronyms (acronym, meaning) VALUES ('BFF', 'Blain s Farm & Fleet');
+INSERT INTO acronyms (acronym, meaning) VALUES ('BFF', `Blain's Farm & Fleet`);
 INSERT INTO acronyms (acronym, meaning) VALUES ('BFO', 'Beneficial Owner');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BFU', 'Batch Field Update');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BHAG', 'Big Harry Audacious Goal');
@@ -1023,7 +1023,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ICM', 'Integrated Currency Mana
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICR', 'Intelligent Character Recognition');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICR', 'Intelligent Call Routing System');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICR', 'Issuer with Comparative Report');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Issuer s Clearinghouse Service');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', `Issuer's Clearinghouse Service`);
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Integrated CDB SMS');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Interchange Control Systems');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Internet Commerce Suite');
