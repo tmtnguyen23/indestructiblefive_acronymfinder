@@ -1344,7 +1344,6 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('MWE', 'Mastercard World Elite')
 INSERT INTO acronyms (acronym, meaning) VALUES ('MWP', 'Mastercard World Prepay');
 INSERT INTO acronyms (acronym, meaning) VALUES ('N2G', 'Net To Gross');
 INSERT INTO acronyms (acronym, meaning) VALUES ('nan', 'Not Applicable');
-INSERT INTO acronyms (acronym, meaning) VALUES ('nan', 'Not Applicable');
 INSERT INTO acronyms (acronym, meaning) VALUES ('nan', 'North America');
 INSERT INTO acronyms (acronym, meaning) VALUES ('NACHA', 'National ACH Association');
 INSERT INTO acronyms (acronym, meaning) VALUES ('NADS', 'Native Abstraction for Data Storage');

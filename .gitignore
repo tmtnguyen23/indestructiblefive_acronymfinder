@@ -129,5 +129,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# pycache
+backend/__pycache__
+
 # database mount 
 db_data/

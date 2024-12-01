@@ -46,41 +46,6 @@ def search_acronym():
         cursor.close()
         conn.close()
 
-@app.route('/add_acronym')
-def add_acronym():
-    """
-    This function adds the user-suggested acronym to the database.
-    """
-    #TODO: HOW THE 'SUGGEST ACRONYM' PAGE LOOKS LIKE? 
-    word = request.args.get('suggestion')
-    meaning = request.args.get('meaning')
-    
-    # Get a database connection
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    
-    try:
-        # Query the database for the acronym
-        query = "SELECT id, acronym, meaning FROM acronyms WHERE acronym = %s"
-        iquery = "INSERT INTO acronyms (acronym, meaning) VALUES (%s, %s)"
-        cursor.execute(query, (word,))
-
-        results = cursor.fetchall()
-
-        # Check if acronym is found
-        if len(results) > 0:
-            for result in results: 
-                if word == result[1] and meaning == result[2]:
-                    return jsonify({'message': 'Acronym already exists'}), 200
-                else: 
-                    cursor.execute(iquery, (word, meaning))
-                    return jsonify({"message": "Added acronym to the database"}), 200
-        else:
-            return jsonify({"message": "Added acronym to the database"}), 200
-    finally:
-        cursor.close()
-        conn.close()
-
 @app.route('/random_acronym')
 def random_acronym():
     """
@@ -102,6 +67,8 @@ def random_acronym():
             acronym, meaning = result["acronym"], result["meaning"] 
             result_str = acronym + " - " + meaning 
             return jsonify({'result': result_str}), 200
+        else: 
+            return jsonify({'result': None}), 404
     finally:
         cursor.close()
         conn.close()
