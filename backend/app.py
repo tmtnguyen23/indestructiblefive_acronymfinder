@@ -24,13 +24,13 @@ def search_acronym():
     
     # Get a database connection
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor_query = conn.cursor()
     
     try:
         # Query the database for the acronym
         query = f"SELECT meaning FROM acronyms WHERE acronym = %s"
-        cursor.execute(query, (acronym,))
-        results = cursor.fetchall()
+        cursor_query.execute(query, (acronym,))
+        results = cursor_query.fetchall()
 
         result_list = []
         for i in range(len(results)):
@@ -39,9 +39,30 @@ def search_acronym():
 
         # Check if acronym is found
         if len(result_list) > 0:
+            process_freq(acronym)
             return jsonify({'result': result_list}), 200
         else:
             return jsonify({"message": "Acronym not found"}), 404
+    finally:
+        cursor_query.close()
+        conn.close()
+
+def process_freq(acronym):
+    
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        # TODO: currently fails to take in acronyms with multiple meanings
+        query = f"INSERT INTO frequent_search (acronym, freq) VALUES (%s, 1) ON DUPLICATE KEY UPDATE freq = freq + 1;"
+        cursor.execute(query, (acronym,))
+
+        # Commit the transaction
+        conn.commit()
+    except Exception as e:
+        # Rollback in case of error
+        conn.rollback()
+        print(f"Error processing frequency: {e}")
     finally:
         cursor.close()
         conn.close()

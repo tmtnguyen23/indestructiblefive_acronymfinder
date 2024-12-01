@@ -1,18 +1,17 @@
 -- init.sql
 USE mydatabase;
 
--- Create the table if it doesn't already exist
+-- Create the acronyms table if it doesn't already exist
 CREATE TABLE IF NOT EXISTS acronyms (
     id INT AUTO_INCREMENT PRIMARY KEY,
     acronym VARCHAR(50),
     meaning VARCHAR(128)
 );
 
--- Create the table if it doesn't already exist
+-- Create the search frequency table if it doesn't already exist, FIX ME
 CREATE TABLE IF NOT EXISTS frequent_search (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    acronym VARCHAR(50),
-    meaning VARCHAR(128),
+    acronym VARCHAR(50) NOT NULL UNIQUE,
     freq INT
 );
 
@@ -113,8 +112,8 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ALU', 'Arthematic and Logic Uni
 INSERT INTO acronyms (acronym, meaning) VALUES ('AMC', 'Alert MCC');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AMD', 'Alternate Media Dispense');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AMF', 'Annual Membership Fee');
-INSERT INTO acronyms (acronym, meaning) VALUES ('AML ', 'Anti Money Laundering ');
-INSERT INTO acronyms (acronym, meaning) VALUES ('AML/CTF', 'Anti Money Laundering / Counter Terrorist Financing');
+INSERT INTO acronyms (acronym, meaning) VALUES ('AML', 'Anti Money Laundering ');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CTF', 'Counter Terrorist Financing');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AMLP', ' Anti-Money Laundering Program');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AMMF', 'Acquirer Merchant Master File');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AMP', 'Acquirer Monitoring Program');
@@ -124,7 +123,6 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ANSI', 'American National Stand
 INSERT INTO acronyms (acronym, meaning) VALUES ('ANI', 'Automatic Number Identification');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ANJI', 'Another NEAT Java Implementation');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ANR', 'Application Not Responding');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ANSI', 'American National Standards Institute');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AOA', 'Account Owner Authentication');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AOP', 'Aspect Oriented Programming');
 INSERT INTO acronyms (acronym, meaning) VALUES ('AOP', 'Annual Operating Plan');
@@ -217,7 +215,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('BAJA', 'Building Automation Jav
 INSERT INTO acronyms (acronym, meaning) VALUES ('BASIC', 'Beginner s All-purpose Symbolic Instruction Code');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BATON', 'Build A Team Through Onboarding & Networking');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BAU', 'Business As Usual');
-INSERT INTO acronyms (acronym, meaning) VALUES ('BBI ', 'Bank-to-Bank Info');
+INSERT INTO acronyms (acronym, meaning) VALUES ('BBI', 'Bank-to-Bank Info');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BBID', 'Billable Business Identification Number');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BBK', 'Beneficiary Bank');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BC', 'Bank Control File');
@@ -236,7 +234,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('BFF', 'Blain s Farm & Fleet');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BFO', 'Beneficial Owner');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BFU', 'Batch Field Update');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BHAG', 'Big Harry Audacious Goal');
-INSERT INTO acronyms (acronym, meaning) VALUES ('BI ', 'Business Intelligence');
+INSERT INTO acronyms (acronym, meaning) VALUES ('BI', 'Business Intelligence');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BI', 'Money Transferred - Bank Initiated');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BI', 'Base I');
 INSERT INTO acronyms (acronym, meaning) VALUES ('BI', 'Bank Initiated P2P');
@@ -290,7 +288,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('C&D', 'Cease & Desist');
 INSERT INTO acronyms (acronym, meaning) VALUES ('C:D', 'Connect:Direct');
 INSERT INTO acronyms (acronym, meaning) VALUES ('C2B', 'Customer to Bank');
 INSERT INTO acronyms (acronym, meaning) VALUES ('C2B', 'Consumer to Bank');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CA ', 'Certificate Authority');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CA', 'Certificate Authority');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CA', 'Cash Advance');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CA', 'Credit Analyst');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAAV', 'Cardholder Authentication Attempts Value Key');
@@ -300,7 +298,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CAD', 'Card Acceptance Device')
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAD', 'Computer-Aided Design');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAE', 'Central Analytics Environment');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAF', 'B24 - Cardholder Authorization File');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CAF ', 'Cash Advance Fee');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CAF', 'Cash Advance Fee');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAID', 'Card Acceptor ID');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAK', 'Cardholder Authentication Verification Value Key');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAL', 'Central Application Logging');
@@ -315,7 +313,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CAPK', 'Certification Authority
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAPS', 'CAMS - Cardholder Application Processing Sub-system');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CARE', 'Customer Assistance Requires Excellence');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CARU', 'B24 - Cardholder Audio Response Unit');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CAS ', 'Card Authorization Service');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CAS', 'Card Authorization Service');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAS', 'Clearing And Settlement');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAS', 'Closing Authorization Summary');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CAS', 'Customer Acceptance System');
@@ -333,7 +331,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CBA', 'Cross-border Acquired');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CBLT', 'Consumer Bank Leadership Team');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CBO', 'Controllership Business Operations');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CBP', 'Cloud Based Payment');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CBG ', 'Corporate Banking Group');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CBG', 'Corporate Banking Group');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CBR', 'Credit Bureau');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ccAuth', 'Commercial Card Authorization');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CC', 'Credit Card');
@@ -355,7 +353,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CCPS', 'Chip Card Payment Servi
 INSERT INTO acronyms (acronym, meaning) VALUES ('CCR', 'Consolidated Credential Services');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CCRT', 'Chip Compliance Reporting Tool');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CCS', 'CAMS - Change Control System');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CD ', 'Compact Disk');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CD', 'Compact Disk');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CD', 'Cash Deposit');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CD', 'Certification of Deposit ');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CDA', 'Certificate of Deposit Account');
@@ -407,7 +405,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CFT', 'Customized File Type');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CGO', 'Covered Government Official');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CHIPS', 'Clearing House Interbank Payment Systems');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CHFA', 'Colorado Housing Finance Authority');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CI ', 'Customer Insights');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CI', 'Customer Insights');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CIB', 'Center Identification Block');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CICS', 'Customer Information Control Service');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CID', 'Civil Investigation Demand');
@@ -445,7 +443,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CMCG', 'Commercial Card Merchan
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMCL', 'Commercial Card Merchant Category Code Limits');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMDB', 'Configuration Management Database');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMF', 'Cardholder Maintenance File ');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CMI ', 'Common Member Interface');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CMI', 'Common Member Interface');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMIR', 'Report of International Transportation of Currency or Monetary Instruments');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMLS', 'Consolidated Master Log Services');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMO', 'Chief Marketing Officer');
@@ -453,7 +451,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CMO', 'Cash Management Online')
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMOD', 'Content Management On Demand');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMP', 'Cloud Management Platform');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CMS', 'Content Management System');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CMT ', 'Commitment');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CMT', 'Commitment');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CNP', 'Card Not Present');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CNT', 'Count');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CO', 'Change Order');
@@ -494,7 +492,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CRA', 'Community Reinvestment A
 INSERT INTO acronyms (acronym, meaning) VALUES ('CRA', 'Credit Reporting Agency');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CRB', 'Card Recovery Bulletin');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CRF', 'Card Range File');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CRI ', 'Chargeback Rights Indicator');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CRI', 'Chargeback Rights Indicator');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CRIS', 'Cardholder Risk Identification Service');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CRM', 'Customer Relationship Management');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CRM', 'Copy Request Manager');
@@ -563,7 +561,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('CVV2', 'Card Verification Value
 INSERT INTO acronyms (acronym, meaning) VALUES ('CWB', 'Combined Warning Bulletin');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CWS', 'CAMS - Check Writing System');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CX', 'Customer Experience');
-INSERT INTO acronyms (acronym, meaning) VALUES ('CY ', 'Calendar Year');
+INSERT INTO acronyms (acronym, meaning) VALUES ('CY', 'Calendar Year');
 INSERT INTO acronyms (acronym, meaning) VALUES ('CYBS', 'CyberSource');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DAC', 'Digital Activity Customers');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DAC', 'Digital To Analog Converter');
@@ -600,8 +598,8 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('DCS', 'Debit Card System');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DCT', 'B24 - Device Control Terminal');
 INSERT INTO acronyms (acronym, meaning) VALUES ('dCVV', 'Dynamic Card Verification Value');
 INSERT INTO acronyms (acronym, meaning) VALUES ('dCVV2', 'Dynamic Card Verification Value2');
-INSERT INTO acronyms (acronym, meaning) VALUES ('DD ', 'Data Dictionary');
-INSERT INTO acronyms (acronym, meaning) VALUES ('DD', 'Due Diligence  ');
+INSERT INTO acronyms (acronym, meaning) VALUES ('DD', 'Data Dictionary');
+INSERT INTO acronyms (acronym, meaning) VALUES ('DD', 'Due Diligence');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DDA', 'Dynamic Data Authentication');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DDA', 'Demand Deposit Account');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DDID', 'CAMS - Data Dictionary Identifier');
@@ -614,7 +612,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('DDR', 'Double Data Rate');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DDR2', 'Double Data Rate 2');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DDR3', 'Double Data Rate 3');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DDR4', 'Double Data Rate 4');
-INSERT INTO acronyms (acronym, meaning) VALUES ('DE ', 'Data Element');
+INSERT INTO acronyms (acronym, meaning) VALUES ('DE', 'Data Element');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DEA', 'Data Encryption Algorithm');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DEATCH', 'Germany (DE) Austria (AT), Switzerland (CH)');
 INSERT INTO acronyms (acronym, meaning) VALUES ('DES', 'Data Encryption Standard');
@@ -715,11 +713,11 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('EACHA', 'European Automated Cle
 INSERT INTO acronyms (acronym, meaning) VALUES ('EANSS', 'European Area National Net Settlement');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EAP', 'Enterprise Architecture Program');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EARNS', 'Electronic Advance Return Notification Service');
-INSERT INTO acronyms (acronym, meaning) VALUES ('EAS ', 'Extended Access Server');
+INSERT INTO acronyms (acronym, meaning) VALUES ('EAS', 'Extended Access Server');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EASB', 'Eat A Snickers Bar');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EB', 'Enterprise Banker');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EBA', 'European Banking Authority');
-INSERT INTO acronyms (acronym, meaning) VALUES ('EBC ', 'Enterprise Business Center');
+INSERT INTO acronyms (acronym, meaning) VALUES ('EBC', 'Enterprise Business Center');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EBCDIC', 'Extended Binary Coded Decimal Interchange Code ');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EBI', 'Enterprise Business Intelligence');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EBIT', 'Earning Before Interest & Tax');
@@ -733,7 +731,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ECI', 'Electronic Control Indic
 INSERT INTO acronyms (acronym, meaning) VALUES ('ECIP', 'Enhanced Chip Initiated Payments');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ECIQ', 'Electronic Client Information Questionnaire');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ECF', 'B24 - Extract Configuration File');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ECP ', 'Electronic Check Payment');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ECP', 'Electronic Check Payment');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ECPA', 'Electronic Communications Privacy Act');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ECOA', 'Equal Credit Opportunity Act');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ECOM', 'Ecommerce');
@@ -792,7 +790,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('EP', 'Environmental Professiona
 INSERT INTO acronyms (acronym, meaning) VALUES ('EPP', 'Encrypting PIN Pad');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EPS', 'Earnings Per Share');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EPS', 'Express Payment Service');
-INSERT INTO acronyms (acronym, meaning) VALUES ('EPS ', 'Encapsulated PostScript');
+INSERT INTO acronyms (acronym, meaning) VALUES ('EPS', 'Encapsulated PostScript');
 INSERT INTO acronyms (acronym, meaning) VALUES ('EQ', 'Environmental Questionnaire');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ERF', 'Email Request Form');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ERIF', 'Enterprise Risk Interface Format');
@@ -838,7 +836,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('FES', 'File Exchange Server');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FF', 'Fast Funds');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FHA', 'Federal Housing Act');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FHLB', 'Federal Home Loan Bank');
-INSERT INTO acronyms (acronym, meaning) VALUES ('FHM ', 'B24 - From Host Maintenance');
+INSERT INTO acronyms (acronym, meaning) VALUES ('FHM', 'B24 - From Host Maintenance');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FHMC', 'Freddie Mac');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FI', 'Financial Institution');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FICO', 'Fair Isaac Corporation');
@@ -849,7 +847,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('FinCEN', 'Financial Crimes Enfo
 INSERT INTO acronyms (acronym, meaning) VALUES ('FIN IPC', 'Financial Interprocess Communication');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FINRA', 'Financial Industry Regulatory Authority');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FIOS', 'Fiber Optic Service');
-INSERT INTO acronyms (acronym, meaning) VALUES ('FIR ', 'File Identification Record');
+INSERT INTO acronyms (acronym, meaning) VALUES ('FIR', 'File Identification Record');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FIRE', 'First Integrated Reporting Experience');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FIS', 'CAMS - Financial Information System');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FIT', 'Financial Institution Table');
@@ -859,7 +857,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('FLOPS', ' Floating Point Operat
 INSERT INTO acronyms (acronym, meaning) VALUES ('FLS', 'Fraud Liability Shift');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FNCM', 'First National Capital Markets');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FNMA', 'Fannie Mae');
-INSERT INTO acronyms (acronym, meaning) VALUES ('FNS ', 'Fraud Notification Service');
+INSERT INTO acronyms (acronym, meaning) VALUES ('FNS', 'Fraud Notification Service');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FNTW', 'First National Tower');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FMIS', 'Financial Management Info Systems');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FPB', 'Fraud Performance Benchmarking');
@@ -881,7 +879,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('FSA', 'Farm Services Administra
 INSERT INTO acronyms (acronym, meaning) VALUES ('FSA', 'Flexible Spending Account');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FSE', 'Foreign Sanctions Evaders');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FSS', 'CAMS - Financial Support System');
-INSERT INTO acronyms (acronym, meaning) VALUES ('FSS', ' Financial Systems Strategy');
+INSERT INTO acronyms (acronym, meaning) VALUES ('FSS', 'Financial Systems Strategy');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FT', 'Funds Transfer');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FTC', 'Federal Trade Commission');
 INSERT INTO acronyms (acronym, meaning) VALUES ('FTC', 'Terms Change Flag');
@@ -946,7 +944,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('GMFP', 'Global Member Fraud Pro
 INSERT INTO acronyms (acronym, meaning) VALUES ('GNS', 'Global Network Services');
 INSERT INTO acronyms (acronym, meaning) VALUES ('GOSE', 'Global Operations and Systems Engineering');
 INSERT INTO acronyms (acronym, meaning) VALUES ('GOS', 'Grade Of Service');
-INSERT INTO acronyms (acronym, meaning) VALUES ('GP ', 'Great Plains');
+INSERT INTO acronyms (acronym, meaning) VALUES ('GP', 'Great Plains');
 INSERT INTO acronyms (acronym, meaning) VALUES ('GP', 'Global Platform');
 INSERT INTO acronyms (acronym, meaning) VALUES ('GPC', 'General Purpose Card');
 INSERT INTO acronyms (acronym, meaning) VALUES ('GPCC', 'General Purpose Credit Card');
@@ -1025,11 +1023,11 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ICM', 'Integrated Currency Mana
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICR', 'Intelligent Character Recognition');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICR', 'Intelligent Call Routing System');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ICR', 'Issuer with Comparative Report');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ICS ', 'Issuer s Clearinghouse Service');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ICS ', 'Integrated CDB SMS');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ICS ', 'Interchange Control Systems');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ICS ', 'Internet Commerce Suite');
-INSERT INTO acronyms (acronym, meaning) VALUES ('iCVV', 'iCC Card Verification Value ');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Issuer s Clearinghouse Service');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Integrated CDB SMS');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Interchange Control Systems');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ICS', 'Internet Commerce Suite');
+INSERT INTO acronyms (acronym, meaning) VALUES ('iCVV', 'iCC Card Verification Value');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ID', 'Identification');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ID&V', 'Identification and Verification');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IDA', 'Issuer Designated Account');
@@ -1054,7 +1052,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ILF', 'B24 - Interchange Log Fi
 INSERT INTO acronyms (acronym, meaning) VALUES ('ILK', 'Interlink');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ILP', 'CAMS - Integrated Loan Processing');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ILS', 'Installment Loan');
-INSERT INTO acronyms (acronym, meaning) VALUES ('IM ', 'Instant Message');
+INSERT INTO acronyms (acronym, meaning) VALUES ('IM', 'Instant Message');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IMD', 'Information Management & Delivery');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IMF', 'International Monetary Fund');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IMK', 'Issuer Master Key');
@@ -1070,9 +1068,9 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('IO', 'Infrastructure & Optimiza
 INSERT INTO acronyms (acronym, meaning) VALUES ('IOI', 'International Outgoing Interchange');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IOR', 'CAMS - Input Output Requirement');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IOT', 'Internet Of Things');
-INSERT INTO acronyms (acronym, meaning) VALUES ('IP ', 'Internet Protocol');
+INSERT INTO acronyms (acronym, meaning) VALUES ('IP', 'Internet Protocol');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IP', 'Intellectual Property');
-INSERT INTO acronyms (acronym, meaning) VALUES ('IPC ', 'Interchange Parameter Card');
+INSERT INTO acronyms (acronym, meaning) VALUES ('IPC', 'Interchange Parameter Card');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IPCF', 'B24 - Issuer Processing Code File');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IPGS', 'Internet Payment Gateway Service');
 INSERT INTO acronyms (acronym, meaning) VALUES ('IPK', 'Issuer Public Key');
@@ -1091,7 +1089,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('IRS', 'Internal Revenue Service
 INSERT INTO acronyms (acronym, meaning) VALUES ('ISA', 'International Service Assessment');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ISIF', 'Interchange Subsystem Information ');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ISO', 'International Organization for Standardization ');
-INSERT INTO acronyms (acronym, meaning) VALUES ('ISO ', 'Information Security Office');
+INSERT INTO acronyms (acronym, meaning) VALUES ('ISO', 'Information Security Office');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ISO', 'Independent Sales Organization');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ISO', 'Information Security Operations');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ISP', 'Internet Service Provider');
@@ -1119,7 +1117,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('JAG', 'Java Application Generat
 INSERT INTO acronyms (acronym, meaning) VALUES ('JAIN', 'Java APIs for Integrated Networks');
 INSERT INTO acronyms (acronym, meaning) VALUES ('JAK', 'Java API KML');
 INSERT INTO acronyms (acronym, meaning) VALUES ('JAMM', 'Java Agent for Memory Measurements');
-INSERT INTO acronyms (acronym, meaning) VALUES ('JAP ', 'Java Anon Proxy');
+INSERT INTO acronyms (acronym, meaning) VALUES ('JAP', 'Java Anon Proxy');
 INSERT INTO acronyms (acronym, meaning) VALUES ('JAPA', 'Japan/Asia Pacific/Australia');
 INSERT INTO acronyms (acronym, meaning) VALUES ('JAPI', 'Java Application Programming Interface');
 INSERT INTO acronyms (acronym, meaning) VALUES ('JAR', 'Java Archive');
@@ -1242,7 +1240,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('MCC', 'Merchant Category Code')
 INSERT INTO acronyms (acronym, meaning) VALUES ('MCC', 'Mixed Mastercard Card');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MCCG', 'Merchant Category Code Group');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MCE', 'Mastercard Electronic');
-INSERT INTO acronyms (acronym, meaning) VALUES ('MCF ', 'Merchant Central File ');
+INSERT INTO acronyms (acronym, meaning) VALUES ('MCF', 'Merchant Central File ');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MCFS', 'Merchant Central File Service');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MCG', 'Mastercard Gold');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MCS', 'Mastercard Standard Card');
@@ -1268,7 +1266,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('MDU', 'Mastercard Debit Unembos
 INSERT INTO acronyms (acronym, meaning) VALUES ('MEA', 'Middle East / Africa');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MES', 'Mastercard Enterprise Solutions');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MF', 'Mainframe');
-INSERT INTO acronyms (acronym, meaning) VALUES ('MFA ', 'Multi Factor Authentication');
+INSERT INTO acronyms (acronym, meaning) VALUES ('MFA', 'Multi Factor Authentication');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MFAS', 'TBS Mainframe Authorization System screen');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MFGN', 'Mastercard Foreign Regions');
 INSERT INTO acronyms (acronym, meaning) VALUES ('MFP', 'Merchant Fraud Performance Program');
@@ -1413,7 +1411,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ODS', 'CAMS - Online Delivery S
 INSERT INTO acronyms (acronym, meaning) VALUES ('OEI', 'Online Extract Interface');
 INSERT INTO acronyms (acronym, meaning) VALUES ('OEM', 'Original Equipment Manufacturer');
 INSERT INTO acronyms (acronym, meaning) VALUES ('OFAC', 'Office of Foreign Asset Control');
-INSERT INTO acronyms (acronym, meaning) VALUES ('OFD ', 'Open File Delivery');
+INSERT INTO acronyms (acronym, meaning) VALUES ('OFD', 'Open File Delivery');
 INSERT INTO acronyms (acronym, meaning) VALUES ('OI', 'Originating Institution ');
 INSERT INTO acronyms (acronym, meaning) VALUES ('OIF', 'Optional Issuer Fee');
 INSERT INTO acronyms (acronym, meaning) VALUES ('OIIT', 'Optional Issuer International Transaction Fee');
@@ -1537,7 +1535,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('PRM', 'Proactive Risk Managemen
 INSERT INTO acronyms (acronym, meaning) VALUES ('PRM', 'Program Request Management');
 INSERT INTO acronyms (acronym, meaning) VALUES ('PRSK', 'Processing Reporting Services');
 INSERT INTO acronyms (acronym, meaning) VALUES ('PRSK', 'Potential Risk File');
-INSERT INTO acronyms (acronym, meaning) VALUES ('PSD ', 'Payment Services Directive');
+INSERT INTO acronyms (acronym, meaning) VALUES ('PSD', 'Payment Services Directive');
 INSERT INTO acronyms (acronym, meaning) VALUES ('PSD2', 'Payment Service Directive 2');
 INSERT INTO acronyms (acronym, meaning) VALUES ('PSE', 'Payment System Environment');
 INSERT INTO acronyms (acronym, meaning) VALUES ('PSI', 'CAMS - Processing Environment Manager Security Interface (in the umbrella system)');
@@ -1611,7 +1609,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('ROM', 'Read Only Memory');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ROM', 'Rough Order of Magnitude');
 INSERT INTO acronyms (acronym, meaning) VALUES ('ROR', 'Ruby On Rails');
 INSERT INTO acronyms (acronym, meaning) VALUES ('RPA', 'Robotic Process Automation');
-INSERT INTO acronyms (acronym, meaning) VALUES ('RPI ', 'Recurring Payment Indicator');
+INSERT INTO acronyms (acronym, meaning) VALUES ('RPI', 'Recurring Payment Indicator');
 INSERT INTO acronyms (acronym, meaning) VALUES ('RPIN', 'Reward Program Identification Number');
 INSERT INTO acronyms (acronym, meaning) VALUES ('RPM', 'CAMS - Relationship and Profitability Manager');
 INSERT INTO acronyms (acronym, meaning) VALUES ('RPQ', 'Request for Product Quote');
@@ -1646,7 +1644,7 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('S/E', 'Service Establishment ')
 INSERT INTO acronyms (acronym, meaning) VALUES ('S/H', 'Shipping & Handling');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SA', 'Solutions Architect');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SaaS', 'Software as a Service');
-INSERT INTO acronyms (acronym, meaning) VALUES ('SAF ', 'Store And Forward');
+INSERT INTO acronyms (acronym, meaning) VALUES ('SAF', 'Store And Forward');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SAFE', 'System to Avoid Fraud Effectively');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SAFE', 'State Administration of Foreign Exchange');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SAG', 'Special Assets Group');
@@ -1724,8 +1722,8 @@ INSERT INTO acronyms (acronym, meaning) VALUES ('SOE', 'State Owned Entity');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SOE', 'State Owned/Controlled Entity');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SOP', 'Standard Operating Procedure');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SOR', 'Statement Of Record');
-INSERT INTO acronyms (acronym, meaning) VALUES ('SOW ', 'Share of Wallet');
-INSERT INTO acronyms (acronym, meaning) VALUES ('SOW ', 'Statement of Work');
+INSERT INTO acronyms (acronym, meaning) VALUES ('SOW', 'Share of Wallet');
+INSERT INTO acronyms (acronym, meaning) VALUES ('SOW', 'Statement of Work');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SOX', 'Sarbanes-Oxley Act');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SPA', 'Secure Payment Application');
 INSERT INTO acronyms (acronym, meaning) VALUES ('SPA2', 'Secure Payment Application Algorithm');
