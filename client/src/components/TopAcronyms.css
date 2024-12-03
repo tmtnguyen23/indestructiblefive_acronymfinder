@@ -1,0 +1,49 @@
+.top-acronyms-container {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .top-acronyms-header {
+    font-size: 24px;
+    color: #006747;
+    margin-bottom: 20px;
+  }
+  
+  .loading-message {
+    font-style: italic;
+    color: #666;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .top-acronyms-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .top-acronyms-list li {
+    background-color: #f3f4f6;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .refresh-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #006747;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .refresh-button:hover {
+    background-color: #00875a;
+  }
+  
