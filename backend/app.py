@@ -106,6 +106,59 @@ def random_acronym():
         cursor.close()
         conn.close()
 
+@app.route('/top_searched_acronyms', methods=['GET'])
+def top_searched_acronyms():
+    """
+    Retrieves the top 5 most searched acronyms along with their meanings.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    try:
+        query = """
+        SELECT fs.acronym, fs.freq, a.meaning
+        FROM frequent_search fs
+        LEFT JOIN acronyms a ON fs.acronym = a.acronym
+        ORDER BY fs.freq DESC
+        LIMIT 5
+        """
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+            return jsonify({'top_searched_acronyms': results}), 200
+        else:
+            return jsonify({'message': 'No searched acronyms found.'}), 404
+    except Exception as e:
+        print(f"Error retrieving top searched acronyms: {e}")
+        return jsonify({'error': f"Internal Server Error: {str(e)}"}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+def process_freq(acronym):
+    """
+    Updates the frequency of the searched acronym in the database.
+    If the acronym doesn't exist in the frequent_search table, it inserts it with freq = 1.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        query = """
+        INSERT INTO frequent_search (acronym, freq)
+        VALUES (%s, 1)
+        ON DUPLICATE KEY UPDATE freq = freq + 1;
+        """
+        cursor.execute(query, (acronym,))
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        print(f"Error updating frequency for {acronym}: {e}")
+    finally:
+        cursor.close()
+        conn.close()
+
 # Route 1 - displays visitor count and increments
 @app.route('/count')
 def count():
