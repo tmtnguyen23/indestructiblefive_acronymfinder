@@ -1,12 +1,189 @@
 .guide-container {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 100px auto 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.guide-container h1 {
+  color: #006747;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 3px solid #006747;
+  padding-bottom: 15px;
+}
+
+.guide-container h2 {
+  color: #006747;
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
+
+.guide-container h3 {
+  color: #333;
+  font-size: 1.4rem;
+  margin: 1.5rem 0 1rem;
+  font-weight: 500;
+}
+
+.guide-container p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+
+.guide-container ul, 
+.guide-container ol {
+  margin: 1.2rem 0;
+  padding-left: 2rem;
+}
+
+.guide-container li {
+  margin-bottom: 0.8rem;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+.guide-container code {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  color: #006747;
+}
+
+.guide-container blockquote {
+  border-left: 4px solid #006747;
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  background-color: #f9f9f9;
+  font-style: italic;
+  color: #555;
+}
+
+.guide-container a {
+  color: #006747;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color 0.2s ease;
+}
+
+.guide-container a:hover {
+  border-bottom-color: #006747;
+}
+
+/* Add a special section style */
+.guide-section {
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 2rem 0;
+}
+
+/* Add style for important notes */
+.important-note {
+  background-color: #fff8dc;
+  border-left: 4px solid #ffd700;
+  padding: 15px;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Add style for tips */
+.tip {
+  background-color: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 15px;
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .guide-container {
+    margin: 20px;
     padding: 20px;
-    font-family: Arial, sans-serif;
   }
 
-p {
-  font-size: 1rem;
-  line-height: 1.5;
+  .guide-container h1 {
+    font-size: 2rem;
+  }
+
+  .guide-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .guide-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .guide-container p,
+  .guide-container li {
+    font-size: 1rem;
+  }
+}
+
+.example-search {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 24px;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.example-search h4 {
+  color: var(--fnbo-primary);
+  margin: 0 0 16px 0;
+  font-size: 1.2rem;
+}
+
+.example-input, .example-output {
+  margin: 12px 0;
+}
+
+.example-label {
+  display: inline-block;
+  font-weight: 600;
   color: #555;
+  margin-right: 12px;
+}
+
+.example-search code {
+  background-color: #e8f5e9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--fnbo-primary);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+}
+
+.example-output ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.example-output ul ul {
+  margin: 4px 0;
+}
+
+.example-output li {
+  margin: 8px 0;
+}
+
+.example-output strong {
+  color: var(--fnbo-primary);
+}
+
+.example-output p {
+  display: inline;
+  margin-left: 8px;
 }

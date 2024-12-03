@@ -1,40 +1,61 @@
 import React from 'react';
 import './Guide.css';
 
-function UserGuide() {
-
+function Guide() {
   return (
-    <div class="guide-container">
-      <h1>Welcome to Acronym Finder</h1>
+    <div className="guide-container">
+      <h1>User Guide</h1>
+      
+      <div className="guide-section">
+        <h2>Getting Started</h2>
+        <p>Welcome to the Acronym Finder! This guide will help you make the most of our tool.</p>
+      </div>
 
-      <p>This guide will help you understand how to navigate through the pages and utilize the key features efficiently.</p>
+      <h2>Search Features</h2>
+      <div className="important-note">
+        <p>To search for an acronym, simply type it into the search box and click "Search".</p>
+      </div>
 
-      <h3>Home Page</h3>
-      <p>Purpose: The central hub where you can search for acronyms.</p>
-      <p>How to Use:</p>
-      <p>
-        Use the search bar at the top to enter an acronym and click the "Search" button.
-        Below the search bar, you will see the "Acronym of the day" displayed.
-      </p>
+      <h3>Basic Search</h3>
+      <p>Enter any acronym to find its meaning. For example: "HTML", "2FA", "DAC".</p>
 
-      <h3>Add Acronym</h3>
-      <p>Purpose: Allows users to contribute to expanding our acronyms database.</p>
-      <p>How to Use:</p>
-      <p>
-        Fill out the form with the acronym and its meaning.
-        Click the "Submit" button to add it to the database.
-      </p>
+      <div className="tip">
+        <p>Pro tip: You can also click "Generate New Acronym" to get a random acronym!</p>
+      </div>
 
-      <h3>Random Acronym</h3>
-      <p>Purpose: Want to become the acronym expert? You should come to this page.</p>
-      <p>How to Use:</p>
-      <p>Click 'Query' and you will see an acronym along with their meaning.</p>
+      <h3>Search Results</h3>
+      <p>Results will show:</p>
+      <ul>
+        <li>The full meaning of the acronym</li>
+        <li>Alternative meanings if they exist</li>
+      </ul>
 
-      <p>Enjoy exploring and discovering new acronyms with ease!</p>
+      <div className="example-search">
+        <h4>Example Search</h4>
+        <div className="example-input">
+          <span className="example-label">Search Input:</span>
+          <code>DAC</code>
+        </div>
+        
+        <div className="example-output">
+          <span className="example-label">Results:</span>
+          <ul>
+            <li>
+              <strong>Primary Meanings:</strong>
+              <ul>
+                <li>Digital Activity Customers</li>
+                <li>Digital To Analog Converter</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <h2>Additional Features</h2>
+      <p>Try our <code>random acronym</code> generator for daily learning!</p>
     </div>
-    );
-  
-
+  );
 }
 
-export default UserGuide;
+export default Guide;

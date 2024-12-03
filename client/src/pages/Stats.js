@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function Stats() {
+
   const [visitorCount, setVisitorCount] = useState('');
   const [topAcronyms, setTopAcronyms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,7 @@ function Stats() {
   }, []); // Fetch top acronyms once
 
   const handleUserVisits = () => {
+    setIsLoading(true);
     fetch('/count')
       .then((res) => {
         if (!res.ok) {
@@ -23,6 +25,7 @@ function Stats() {
         return res.json();
       })
       .then((result) => {
+
         setVisitorCount(result.message || 'Unable to fetch visitor count.');
       })
       .catch((error) => {

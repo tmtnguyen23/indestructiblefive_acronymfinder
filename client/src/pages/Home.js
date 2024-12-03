@@ -59,17 +59,10 @@ function Home() {
 
       <SearchBox onSearch={handleSearch} />
       <div style={{ textAlign: 'center' }}>
-        <p
-          style={{
-            fontSize: '16px',
-            color: '#006747',
-            fontStyle: 'italic',
-            fontFamily: 'Arial',
-          }}
-        >
+        <p style={{ fontSize: '16px', color: '#006747', fontStyle: 'italic', fontFamily: 'Arial' }}>
           Your lucky acronym is {randomWord}
         </p>
-        <button
+        <button 
           onClick={handleRandomSearch}
           style={{
             padding: '8px 16px',
@@ -79,7 +72,7 @@ function Home() {
             borderRadius: '4px',
             cursor: 'pointer',
             fontFamily: 'Arial',
-            marginTop: '10px',
+            marginTop: '10px'
           }}
         >
           Generate New Acronym
