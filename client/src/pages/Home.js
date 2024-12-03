@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import SearchBox from '../components/SearchBox';
 import SearchResult from '../components/SearchResult';
 
-function Home( ) {
+function Home() {
   const [searchResult, setSearchResult] = useState('');
-  const [hasSearched, setHasSearched] = useState(false); // New state to track if a search was made
+  const [hasSearched, setHasSearched] = useState(false);
   const [randomWord, setRandomWord] = useState('');
 
   useEffect(() => {
-    // Call handleRandomSearch when the component mounts
     handleRandomSearch();
   }, []);
 
@@ -26,8 +25,8 @@ function Home( ) {
         }
       })
       .catch((error) => {
-        setSearchResult("An error occurred while searching for the acronym.");
-        console.error(error);
+        console.error('Error searching acronym:', error);
+        setSearchResult('An error occurred while searching for the acronym.');
       });
   };
 
@@ -35,18 +34,25 @@ function Home( ) {
     fetch('/random_acronym')
       .then((res) => res.json())
       .then((result) => {
-        setRandomWord(result.result);
+        setRandomWord(result.result || 'No random acronym found.');
       })
       .catch((error) => {
-        setRandomWord("An error occurred while fetching a random acronym.");
-        console.error(error);
+        console.error('Error fetching random acronym:', error);
+        setRandomWord('An error occurred while fetching a random acronym.');
       });
   };
 
   return (
     <div>
       <div style={{ textAlign: 'center' }}>
-        <h2 style={{ fontSize: '30px', color: '#006747', fontStyle: 'italic', fontFamily: 'Arial' }}>
+        <h2
+          style={{
+            fontSize: '30px',
+            color: '#006747',
+            fontStyle: 'italic',
+            fontFamily: 'Arial',
+          }}
+        >
           Acronym Finder
         </h2>
       </div>
