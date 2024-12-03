@@ -24,13 +24,13 @@ def search_acronym():
     
     # Get a database connection
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor_query = conn.cursor()
     
     try:
         # Query the database for the acronym
         query = f"SELECT meaning FROM acronyms WHERE acronym = %s"
-        cursor.execute(query, (acronym,))
-        results = cursor.fetchall()
+        cursor_query.execute(query, (acronym,))
+        results = cursor_query.fetchall()
 
         result_list = []
         for i in range(len(results)):
@@ -39,44 +39,56 @@ def search_acronym():
 
         # Check if acronym is found
         if len(result_list) > 0:
+            process_freq(acronym)
             return jsonify({'result': result_list}), 200
         else:
             return jsonify({"message": "Acronym not found"}), 404
     finally:
+        cursor_query.close()
+        conn.close()
+
+@app.route('/top_searched_acronyms', methods=['GET'])
+def top_searched_acronyms():
+    """
+    Retrieves the top 5 most searched acronyms along with their meanings.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    try:
+        query = "SELECT fs.acronym, fs.freq, a.meaning FROM frequent_search fs LEFT JOIN acronyms a ON fs.acronym = a.acronym ORDER BY fs.freq DESC LIMIT 5"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+            return jsonify({'top_searched_acronyms': results}), 200
+        else:
+            return jsonify({'message': 'No searched acronyms found.'}), 404
+    except Exception as e:
+        print(f"Error retrieving top searched acronyms: {e}")
+        return jsonify({'error': f"Internal Server Error: {str(e)}"}), 500
+    finally:
         cursor.close()
         conn.close()
 
-@app.route('/add_acronym')
-def add_acronym():
+def process_freq(acronym):
     """
-    This function adds the user-suggested acronym to the database.
+    Updates the frequency of the searched acronym in the database.
+    If the acronym doesn't exist in the frequent_search table, it inserts it with freq = 1.
     """
-    #TODO: HOW THE 'SUGGEST ACRONYM' PAGE LOOKS LIKE? 
-    word = request.args.get('suggestion')
-    meaning = request.args.get('meaning')
-    
-    # Get a database connection
     conn = get_db_connection()
     cursor = conn.cursor()
-    
+
     try:
-        # Query the database for the acronym
-        query = "SELECT id, acronym, meaning FROM acronyms WHERE acronym = %s"
-        iquery = "INSERT INTO acronyms (acronym, meaning) VALUES (%s, %s)"
-        cursor.execute(query, (word,))
+        query = f"INSERT INTO frequent_search (acronym, freq) VALUES (%s, 1) ON DUPLICATE KEY UPDATE freq = freq + 1;"
+        cursor.execute(query, (acronym,))
 
-        results = cursor.fetchall()
-
-        # Check if acronym is found
-        if len(results) > 0:
-            for result in results: 
-                if word == result[1] and meaning == result[2]:
-                    return jsonify({'message': 'Acronym already exists'}), 200
-                else: 
-                    cursor.execute(iquery, (word, meaning))
-                    return jsonify({"message": "Added acronym to the database"}), 200
-        else:
-            return jsonify({"message": "Added acronym to the database"}), 200
+        # Commit the transaction
+        conn.commit()
+    except Exception as e:
+        # Rollback in case of error
+        conn.rollback()
+        print(f"Error processing frequency: {e}")
     finally:
         cursor.close()
         conn.close()
@@ -102,59 +114,8 @@ def random_acronym():
             acronym, meaning = result["acronym"], result["meaning"] 
             result_str = acronym + " - " + meaning 
             return jsonify({'result': result_str}), 200
-    finally:
-        cursor.close()
-        conn.close()
-
-@app.route('/top_searched_acronyms', methods=['GET'])
-def top_searched_acronyms():
-    """
-    Retrieves the top 5 most searched acronyms along with their meanings.
-    """
-    conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-
-    try:
-        query = """
-        SELECT fs.acronym, fs.freq, a.meaning
-        FROM frequent_search fs
-        LEFT JOIN acronyms a ON fs.acronym = a.acronym
-        ORDER BY fs.freq DESC
-        LIMIT 5
-        """
-        cursor.execute(query)
-        results = cursor.fetchall()
-
-        if results:
-            return jsonify({'top_searched_acronyms': results}), 200
-        else:
-            return jsonify({'message': 'No searched acronyms found.'}), 404
-    except Exception as e:
-        print(f"Error retrieving top searched acronyms: {e}")
-        return jsonify({'error': f"Internal Server Error: {str(e)}"}), 500
-    finally:
-        cursor.close()
-        conn.close()
-
-def process_freq(acronym):
-    """
-    Updates the frequency of the searched acronym in the database.
-    If the acronym doesn't exist in the frequent_search table, it inserts it with freq = 1.
-    """
-    conn = get_db_connection()
-    cursor = conn.cursor()
-
-    try:
-        query = """
-        INSERT INTO frequent_search (acronym, freq)
-        VALUES (%s, 1)
-        ON DUPLICATE KEY UPDATE freq = freq + 1;
-        """
-        cursor.execute(query, (acronym,))
-        conn.commit()
-    except Exception as e:
-        conn.rollback()
-        print(f"Error updating frequency for {acronym}: {e}")
+        else: 
+            return jsonify({'result': None}), 404
     finally:
         cursor.close()
         conn.close()
