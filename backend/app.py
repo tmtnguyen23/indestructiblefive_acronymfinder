@@ -56,7 +56,7 @@ def top_searched_acronyms():
     cursor = conn.cursor()
 
     try:
-        query = "SELECT fs.acronym, fs.freq, a.meaning FROM frequent_search fs LEFT JOIN acronyms a ON fs.acronym = a.acronym ORDER BY fs.freq DESC LIMIT 5"
+        query = "SELECT acronym, freq from frequent_search ORDER BY freq DESC LIMIT 5";
         cursor.execute(query)
         results = cursor.fetchall()
 
