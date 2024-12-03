@@ -1,6 +1,6 @@
 # indestructiblefive_acronymfinder
 
-<img width="955" alt="image" src="https://github.com/user-attachments/assets/30550a8b-5a79-4554-97d0-f6f414d54431">
+<img width="939" alt="image" src="https://github.com/user-attachments/assets/6d39403a-2c2f-4c16-ae80-e576911b6c64">
 
 Before you start making changes, please make sure you are on a newly-created branch for your changes to avoid conflicts with the other developer. 
 
@@ -13,5 +13,10 @@ To deploy the app on Docker, you will need:
 4. Follow the console log to see if the build's finished or runs into any error. 
 5. If you want to remove the created Docker containers, do: docker-compose down
 6. (optional) Install Docker extension on VS Code for docker compose start/stop. 
+
+Further developments: 
+1. Format the top searched list in a table
+2. Add some Christmas decorations 
+3. (optional) a hyper link for the acronym to leads to the search page 
 
 Feel free to ask questions or share cool tricks/videos to the group's Discord server!
