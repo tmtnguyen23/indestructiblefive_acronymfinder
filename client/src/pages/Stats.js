@@ -63,7 +63,14 @@ function Stats() {
       <h2 style={{ fontSize: '30px', color: '#006341', marginBottom: '20px', fontFamily: 'Arial' }}>
         Website Statistics
       </h2>
-      <p>{visitorCount}</p>
+      <div style={{ 
+        fontSize: '24px', 
+        color: '#666', 
+        margin: '0 auto 30px auto',
+        maxWidth: '400px'
+      }}>
+        {visitorCount}
+      </div>
 
       <h3 style={{ fontSize: '24px', color: '#006341', marginTop: '30px', fontFamily: 'Arial' }}>
         Top 5 Most Searched Acronyms
@@ -71,13 +78,38 @@ function Stats() {
       {isLoading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {!isLoading && topAcronyms.length > 0 && (
-        <ul>
-          {topAcronyms.map((item, index) => (
-            <li key={index}>
-              {item.acronym} - {item.freq} searches
-            </li>
-          ))}
-        </ul>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+            <thead>
+              <tr style={{ backgroundColor: '#006341', color: 'white' }}>
+                <th style={{ padding: '12px', textAlign: 'center' }}>Acronym</th>
+                <th style={{ padding: '12px', textAlign: 'center' }}>Meaning(s)</th>
+                <th style={{ padding: '12px', textAlign: 'center' }}>Searches</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topAcronyms.map((item, index) => (
+                <tr 
+                  key={index}
+                  style={{ 
+                    backgroundColor: index % 2 === 0 ? '#f8f9fa' : 'white',
+                    borderBottom: '1px solid #dee2e6'
+                  }}
+                >
+                  <td style={{ padding: '12px' }}>{item.acronym.toUpperCase()}</td>
+                  <td style={{ padding: '12px' }}>
+                    {item.meanings.map((meaning, idx) => (
+                      <div key={idx} style={{ marginBottom: idx !== item.meanings.length - 1 ? '8px' : '0' }}>
+                        {meaning}
+                      </div>
+                    ))}
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center' }}>{item.freq}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -56,12 +56,27 @@ def top_searched_acronyms():
     cursor = conn.cursor()
 
     try:
-        query = "SELECT acronym, freq from frequent_search ORDER BY freq DESC LIMIT 5";
+        # First set the group_concat_max_len to a larger value
+        cursor.execute("SET SESSION group_concat_max_len = 1000000;")
+        
+        query = """
+            SELECT f.acronym, f.freq, GROUP_CONCAT(DISTINCT a.meaning SEPARATOR '|||') as meanings
+            FROM frequent_search f
+            INNER JOIN acronyms a ON f.acronym = a.acronym
+            GROUP BY f.acronym, f.freq
+            ORDER BY f.freq DESC, f.acronym ASC
+            LIMIT 5
+        """
         cursor.execute(query)
         results = cursor.fetchall()
 
         if results:
-            return jsonify({'top_searched_acronyms': results}), 200
+            formatted_results = [{
+                'acronym': row['acronym'],
+                'freq': row['freq'],
+                'meanings': row['meanings'].split('|||') if row['meanings'] else []
+            } for row in results]
+            return jsonify({'top_searched_acronyms': formatted_results}), 200
         else:
             return jsonify({'message': 'No searched acronyms found.'}), 404
     except Exception as e:
@@ -80,15 +95,25 @@ def process_freq(acronym):
     cursor = conn.cursor()
 
     try:
-        query = f"INSERT INTO frequent_search (acronym, freq) VALUES (%s, 1) ON DUPLICATE KEY UPDATE freq = freq + 1;"
-        cursor.execute(query, (acronym,))
+        # First check if the acronym exists
+        check_query = "SELECT freq FROM frequent_search WHERE acronym = %s"
+        cursor.execute(check_query, (acronym,))
+        result = cursor.fetchone()
 
-        # Commit the transaction
-        conn.commit()
+        if result:
+            # Update existing record
+            update_query = "UPDATE frequent_search SET freq = freq + 1 WHERE acronym = %s"
+            cursor.execute(update_query, (acronym,))
+        else:
+            # Insert new record
+            insert_query = "INSERT INTO frequent_search (acronym, freq) VALUES (%s, 1)"
+            cursor.execute(insert_query, (acronym,))
+
+        conn.commit()  # Ensure the transaction is committed
     except Exception as e:
-        # Rollback in case of error
-        conn.rollback()
+        conn.rollback()  # Rollback in case of error
         print(f"Error processing frequency: {e}")
+        raise e  # Re-raise the exception for debugging
     finally:
         cursor.close()
         conn.close()
