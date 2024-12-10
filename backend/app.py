@@ -149,5 +149,5 @@ def random_acronym():
 @app.route('/count')
 def count():
     count = client.incr('visitor_count')
-    message_str = f'You are Visitor number: {count}'
+    message_str = f'Page Visits: {count}'
     return jsonify({'message' : message_str})

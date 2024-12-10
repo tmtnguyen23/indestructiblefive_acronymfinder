@@ -1,0 +1,15 @@
+/* Footer.css */
+.footer {
+    padding: 20px 0;         /* Space around the image */
+    text-align: center;      /* Center-align the image */
+    position: relative;      /* Makes sure the footer is positioned properly */
+  }
+  
+  .footer-image {
+    width: 100%;             /* Ensure the image takes the full width */
+    height: auto;            /* Maintain aspect ratio */
+    max-width: 100%;         /* Limit the maximum width to 100% */
+    display: block;          /* Remove extra space below the image */
+    margin: 0 auto;          /* Center image horizontally */
+  }
+  
