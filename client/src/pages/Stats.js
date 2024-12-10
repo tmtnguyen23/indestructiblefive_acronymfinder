@@ -79,7 +79,7 @@ function Stats() {
       {isLoading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {!isLoading && topAcronyms.length > 0 && (
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '47px'  }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
             <thead>
               <tr style={{ backgroundColor: '#006341', color: 'white', fontFamily: 'Arial', fontSize: '20px' }}>
